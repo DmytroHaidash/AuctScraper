@@ -1,0 +1,56 @@
+#app-footer {
+  color: $headings-color;
+  background-color: $dark;
+
+  a {
+    color: currentColor;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+.footer-logo {
+  a {
+    figure {
+      width: 165px;
+      height: 68px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+    }
+  }
+
+  @media (max-width: map_get($grid-breakpoints, md)) {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+  }
+
+  @media (min-width: map_get($grid-breakpoints, md)) {
+    padding-right: 3rem;
+  }
+}
+
+.footer-info {
+  padding: 60px 0;
+}
+
+.copyrights {
+  background-color: $dark;
+  font-size: rem-calc(14);
+  color: #fff;
+}
+
+.subscription-form {
+  max-width: 450px;
+}
+
+.footer-items {
+  @media (max-width: map_get($grid-breakpoints, md)) {
+    text-align: center;
+    display: flex;
+    width: 100%;
+  }
+}
