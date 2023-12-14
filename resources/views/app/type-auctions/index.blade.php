@@ -47,7 +47,7 @@
                             {{ $auction->name }}
                         </a>
                     </td>
-                    <td class="text-center">{{ $auction->period }}</td>
+                    <td >{{ $auction->period }}</td>
                     <td width="150">{{ $auction->created_at->formatLocalized('%d %b %Y, %H:%M') }}</td>
                     <td width="100">
                         <a href="{{ route('type.edit', $auction) }}"

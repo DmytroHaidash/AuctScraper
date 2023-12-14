@@ -18,7 +18,9 @@
 <body>
 <div id="app">
     @includeIf('partials.admin.icons')
+    @if(auth()->check())
     @includeIf('partials.admin.header')
+    @endif
     @includeIf('partials.admin.notifications')
     {{--@includeIf('partials.admin.aside')--}}
 

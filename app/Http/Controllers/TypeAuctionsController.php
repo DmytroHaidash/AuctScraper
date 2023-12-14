@@ -22,23 +22,30 @@ class TypeAuctionsController extends Controller
 
     public function store(Request $request)
     {
-
+        TypeAuction::query()->create([
+            'name' => $request->get('title'),
+            'period' => $request->get('period')
+        ]);
+        return redirect()->route('type.index');
     }
 
-    public function edit(TypeAuction $auction): View
+    public function edit(TypeAuction $type): View
     {
-        return  view('app.type-auctions.edit', compact('auction'));
+        return view('app.type-auctions.edit', compact('type'));
     }
 
-    public function update(Request $request, TypeAuction $auction): RedirectResponse
+    public function update(Request $request, TypeAuction $type): RedirectResponse
     {
-
-        return redirect()->route('');
+        $type->update([
+            'name' => $request->get('title'),
+            'period' => $request->get('period')
+        ]);
+        return redirect()->route('type.index');
     }
 
-    public function destroy(TypeAuction $auction): RedirectResponse
+    public function destroy(TypeAuction $type): RedirectResponse
     {
-        $auction->delete();
-        return redirect()->route();
+        $type->delete();
+        return redirect()->route('type.index');
     }
 }
