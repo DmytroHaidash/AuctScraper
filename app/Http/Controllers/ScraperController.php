@@ -13,12 +13,12 @@ class ScraperController extends Controller
     public function index(): View
     {
         $scrapers = Scraper::query()->paginate(20);
-        return view('app.scrapers.index', $scrapers);
+        return view('app.scrapers.index', compact('scrapers'));
     }
 
     public function create(): View
     {
-        $auctions = TypeAuction::query()->all();
+        $auctions = TypeAuction::query()->get();
         return view('app.scrapers.create', compact('auctions'));
     }
 
@@ -36,7 +36,7 @@ class ScraperController extends Controller
 
     public function edit(Scraper $scraper): View
     {
-        $auctions = TypeAuction::query()->all();
+        $auctions = TypeAuction::query()->get();
         return view('app.scrapers.edit', compact('auctions', 'scraper'));
     }
 

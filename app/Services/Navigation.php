@@ -15,12 +15,12 @@ class Navigation
                 'icon' => 'i-newspaper',
                 'compare' => 'type.index'
             ]),
-          /*  new NavItem([
+            new NavItem([
                 'name' => 'Scrapers',
-                'route' => 'scrapers',
+                'route' => 'scraper',
                 'icon' => 'i-newspaper',
-                'compare' => 'scrapers.index'
-            ]),*/
+                'compare' => 'scraper.index'
+            ]),
 //            new NavItem([
 //                'name' => 'Products',
 //                'route' => 'products',

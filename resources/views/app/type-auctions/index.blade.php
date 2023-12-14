@@ -8,25 +8,25 @@
                 <a href="{{ route('type.create') }}" class="btn btn-primary">
                     Create
                 </a>
-                @if (count(request()->query()) && (count(request()->except('page'))))
-                    <a href="{{ route('type.index') }}" class="btn btn-dark ml-4">
-                        <i class="i-reload"></i>
-                        Clear filters
-                    </a>
-                @endif
+{{--                @if (count(request()->query()) && (count(request()->except('page'))))--}}
+{{--                    <a href="{{ route('type.index') }}" class="btn btn-dark ml-4">--}}
+{{--                        <i class="i-reload"></i>--}}
+{{--                        Clear filters--}}
+{{--                    </a>--}}
+{{--                @endif--}}
             </div>
         </div>
 
-        <form class="my-4 d-flex">
-            <div class="mr-2 flex-grow-1">
-                <input type="text" name="q" value="{{ request()->get('q', null) }}" class="form-control"
-                       placeholder="Search">
-            </div>
-            <button class="btn btn-primary">
-                <i class="i-search"></i>
-                Search
-            </button>
-        </form>
+{{--        <form class="my-4 d-flex">--}}
+{{--            <div class="mr-2 flex-grow-1">--}}
+{{--                <input type="text" name="q" value="{{ request()->get('q', null) }}" class="form-control"--}}
+{{--                       placeholder="Search">--}}
+{{--            </div>--}}
+{{--            <button class="btn btn-primary">--}}
+{{--                <i class="i-search"></i>--}}
+{{--                Search--}}
+{{--            </button>--}}
+{{--        </form>--}}
         <table class="table table-striped">
             <thead>
             <tr class="small">
