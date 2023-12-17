@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('url');
             $table->boolean('run')->default(0);
+            $table->integer('period')->default(2);
             $table->unsignedBigInteger('type_auction_id')->nullable();
             $table->dateTime('last_scraped_at')->nullable();
             $table->timestamps();

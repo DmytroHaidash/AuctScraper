@@ -32,17 +32,6 @@
                         @endif
                     </div>
 
-                    <div class="form-group{{ $errors->has('period') ? ' is-invalid' : '' }}">
-                        <label for="period">Period</label>
-                        <input type="number" class="form-control" id="period" name="period" min="1" step="1"
-                               value="{{ old('period') ?? $type->period }}" required>
-                        @if($errors->has('period'))
-                            <div class="mt-1 text-danger">
-                                {{ $errors->first('period') }}
-                            </div>
-                        @endif
-                    </div>
-
                     <div class="mt-4 d-flex align-items-center">
                         <button class="btn btn-primary">Save</button>
 

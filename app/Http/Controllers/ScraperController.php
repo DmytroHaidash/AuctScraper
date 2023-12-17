@@ -27,6 +27,7 @@ class ScraperController extends Controller
         Scraper::query()->create([
             'name' => $request->get('title'),
             'run' => $request->has('run'),
+            'period' => $request->get('period'),
             'url' => $request->get('url'),
             'type_auction_id' => $request->get('type')
         ]);
@@ -45,6 +46,7 @@ class ScraperController extends Controller
         $scraper->update([
             'name' => $request->get('title'),
             'run' => $request->has('run'),
+            'period' => $request->get('period'),
             'url' => $request->get('url'),
             'type_auction_id' => $request->get('type')
         ]);

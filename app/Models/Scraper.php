@@ -15,6 +15,7 @@ class Scraper extends Model
         'name',
         'run',
         'url',
+        'period',
         'type_auction_id',
         'last_scraped_at'
     ];

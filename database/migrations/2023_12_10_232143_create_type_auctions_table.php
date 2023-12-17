@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('type_auctions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('period')->default(2);
             $table->text('credentials')->nullable();
             $table->timestamps();
         });
