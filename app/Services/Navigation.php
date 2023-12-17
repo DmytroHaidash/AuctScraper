@@ -21,12 +21,12 @@ class Navigation
                 'icon' => 'i-newspaper',
                 'compare' => 'scraper.index'
             ]),
-//            new NavItem([
-//                'name' => 'Products',
-//                'route' => 'products',
-//                'icon' => 'i-newspaper',
-//                'compare' => 'products.index'
-//            ]),
+            new NavItem([
+                'name' => 'Products',
+                'route' => 'product',
+                'icon' => 'i-newspaper',
+                'compare' => 'product.index'
+            ]),
         ];
         return $navigation;
     }

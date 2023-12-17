@@ -20,6 +20,17 @@
                         @endif
                     </div>
 
+                    <div class="form-group{{ $errors->has('credentials') ? ' is-invalid' : '' }}">
+                        <label for="credentials">Credentials</label>
+                        <input type="text" class="form-control" id="credentials" name="credentials"
+                               value="{{ old('credentials') }}">
+                        @if($errors->has('credentials'))
+                            <div class="mt-1 text-danger">
+                                {{ $errors->first('credentials') }}
+                            </div>
+                        @endif
+                    </div>
+
                     <div class="form-group{{ $errors->has('period') ? ' is-invalid' : '' }}">
                         <label for="period">Period</label>
                         <input type="number" class="form-control" id="period" name="period" min="1" step="1"

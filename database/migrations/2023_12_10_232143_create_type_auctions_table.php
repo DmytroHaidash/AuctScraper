@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('period')->default(2);
+            $table->text('credentials')->nullable();
             $table->timestamps();
         });
     }

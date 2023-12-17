@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('url');
             $table->boolean('run')->default(0);
             $table->unsignedBigInteger('type_auction_id')->nullable();
+            $table->dateTime('last_scraped_at')->nullable();
             $table->timestamps();
 
             $table->foreign('type_auction_id')->references('id')->on('type_auctions')->onDelete('set null');

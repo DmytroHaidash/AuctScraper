@@ -18,9 +18,11 @@ return new class extends Migration
             $table->decimal('old_price')->nullable();
             $table->decimal('new_price');
             $table->unsignedBigInteger('type_auction_id')->nullable();
+            $table->unsignedBigInteger('scraper_id')->nullable();
             $table->timestamps();
 
             $table->foreign('type_auction_id')->references('id')->on('type_auctions')->onDelete('set null');
+            $table->foreign('scraper_id')->references('id')->on('scrapers')->onDelete('set null');
 
         });
     }

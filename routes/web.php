@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('type', \App\Http\Controllers\TypeAuctionsController::class)->except(['show']);
     Route::resource('scraper', \App\Http\Controllers\ScraperController::class)->except(['show']);
+    Route::get('products', [\App\Http\Controllers\ProductsController::class, 'index'])->name('product.index');
 });
 
 require __DIR__.'/auth.php';

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Scraper extends Model
 {
@@ -14,11 +15,17 @@ class Scraper extends Model
         'name',
         'run',
         'url',
-        'type_auction_id'
+        'type_auction_id',
+        'last_scraped_at'
     ];
 
     public function auction(): BelongsTo
     {
         return $this->belongsTo(TypeAuction::class, 'type_auction_id', 'id');
+    }
+
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class, 'scraper_id', 'id');
     }
 }
