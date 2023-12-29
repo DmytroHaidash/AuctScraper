@@ -12,6 +12,7 @@ class TypeAuction extends Model
 
     protected $fillable = [
         'name',
+        'link',
         'credentials'
     ];
 

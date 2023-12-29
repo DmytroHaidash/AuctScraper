@@ -24,6 +24,7 @@ class TypeAuctionsController extends Controller
     {
         TypeAuction::query()->create([
             'name' => $request->get('title'),
+            'link' => $request->get('link'),
             'credentials' => $request->get('credentials')
         ]);
         return redirect()->route('type.index');
@@ -38,6 +39,7 @@ class TypeAuctionsController extends Controller
     {
         $type->update([
             'name' => $request->get('title'),
+            'link' => $request->get('link'),
             'credentials' => $request->get('credentials')
         ]);
         return redirect()->route('type.index');

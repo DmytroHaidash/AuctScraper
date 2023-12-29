@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\PriceHistory;
 use App\Models\Product;
 use App\Models\Scraper;
 use Carbon\Carbon;
@@ -92,6 +93,11 @@ class ScrapeAuctions extends Command
                 $product->update([
                     'old_price' => $product->new_price,
                     'new_price' => $price
+                ]);
+                PriceHistory::query()->create([
+                    'product_id' => $product->id,
+                    'old_price'  => $product->old_price,
+                    'new_price'  => $product->new_price
                 ]);
             } else {
                 Product::query()->create([

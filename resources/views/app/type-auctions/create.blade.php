@@ -20,6 +20,16 @@
                         @endif
                     </div>
 
+                    <div class="form-group{{ $errors->has('link') ? ' is-invalid' : '' }}">
+                        <label for="link">Link</label>
+                        <input type="text" class="form-control" id="link" name="link"
+                               value="{{ old('link') }}" required>
+                        @if($errors->has('link'))
+                            <div class="mt-1 text-danger">
+                                {{ $errors->first('link') }}
+                            </div>
+                        @endif
+                    </div>
                     <div class="form-group{{ $errors->has('credentials') ? ' is-invalid' : '' }}">
                         <label for="credentials">Credentials</label>
                         <input type="text" class="form-control" id="credentials" name="credentials"

@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('type_auctions', function (Blueprint $table) {
+        Schema::create('price_histories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('link');
-            $table->text('credentials')->nullable();
+            $table->unsignedBigInteger('product_id');
+            $table->decimal('old_price');
+            $table->decimal('new_price');
             $table->timestamps();
+
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+
         });
     }
 
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('type_auctions');
+        Schema::dropIfExists('price_histories');
     }
 };
