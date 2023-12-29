@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\PriceHistory;
 use App\Models\Product;
 use App\Models\Scraper;
+use App\Models\TypeAuction;
 use Carbon\Carbon;
 use DOMDocument;
 use DOMXPath;
@@ -57,21 +58,27 @@ class ScrapeAuctions extends Command
         try {
             $response = $client->get($scraper->url);
             $html = $response->getBody()->getContents();
-            $this->extractLiveAuctionProducts($html, $scraper);
+            $productsUpdated = $this->extractLiveAuctionProducts($html, $scraper);
             $scraper->update(['last_scraped_at', $runTime]);
+            if(count($productsUpdated)) {
+                //scrape account
+                $accountData = $this->scrapeAccount($scraper->auction);
+                //send email
+            }
         } catch (Exception $e) {
             $this->line($e->getMessage());
         }
         sleep(0.3);
     }
 
-    private function extractLiveAuctionProducts($html, Scraper $scraper)
+    private function extractLiveAuctionProducts($html, Scraper $scraper): array
     {
         libxml_use_internal_errors(true);
 
         $dom = new DOMDocument;
         $dom->loadHTML($html);
         $articleTags = $dom->getElementsByTagName('article');
+        $pricesUpdated = [];
         foreach ($articleTags as $tag) {
             $articleHTML = $dom->saveHTML($tag);
             $d = new DOMDocument;
@@ -99,6 +106,7 @@ class ScrapeAuctions extends Command
                     'old_price'  => $product->old_price,
                     'new_price'  => $product->new_price
                 ]);
+                $pricesUpdated[] = $product;
             } else {
                 Product::query()->create([
                     'name' => $name,
@@ -109,9 +117,11 @@ class ScrapeAuctions extends Command
                 ]);
             }
         }
+
+        return $pricesUpdated;
     }
 
-    function extractTextContent($xpath, $query)
+    public function extractTextContent($xpath, $query)
     {
         $elements = $xpath->query($query);
         $textContent = '';
@@ -121,6 +131,25 @@ class ScrapeAuctions extends Command
         }
 
         return $textContent;
+    }
+
+
+    public function scrapeAccount(TypeAuction $auction): array
+    {
+        $data = [];
+
+        $faker = Factory::create();
+        $client = new Client([
+            'headers' => [
+                'User-Agent' => $faker->userAgent()
+            ],
+            'verify' => false,
+        ]);
+        $response = $client->get($auction->link);
+        $html = $response->getBody()->getContents();
+
+
+        return $data;
     }
 
 }
